@@ -221,7 +221,7 @@ task WMGame "Web & Mobile Game" {
     chargeset mFront
     responsible Jorge
     depends WMGame.tgdesign
-    task tDiseñoInterfaz "Diseño interfaz"{
+    task tDisenoInterfaz "Diseño interfaz"{
     	effort 6d
     	allocate dev2
     }
