@@ -70,7 +70,7 @@ resource dev3 "Peter Green" {
   email "kkk@unizar.es"
 }
 
-resoruce Jorge "Jorge Calvo" {
+resource Jorge "Jorge Calvo" {
   email "816357@unizar.es"
   rate 80
   limits { dailymax 4h }
