@@ -197,7 +197,7 @@ task WMGame "Web & Mobile Game" {
   
   task tbackendcloud "Soporte despligue en la nube back-end" {
   	purge chargeset
-  	chargeset backEnd
+  	chargeset back
   	responsible Jorge
   	depends WMGame.tback
   	task tSeleccion "Seleccionar la nube para llevar a cabo el despliegue"{
