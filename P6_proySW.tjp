@@ -229,6 +229,7 @@ task WMGame "Web & Mobile Game" {
     	effort 5d
     	allocate dev1, Jorge
     }
+  }
 }
 
 # Now the project has been specified completely. Stopping here would
