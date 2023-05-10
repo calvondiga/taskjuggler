@@ -19,7 +19,7 @@ project pSix "Web Game"  2023-03-15 +2.5m {
   # the project reports. If not specified, the current day will be
   # used, but this will likely be outside of the project range, so it
   # can't be seen in the reports.
-  now 2023-04-15-13:00
+  now 2023-05-10-11:00
   # The currency for all money values is the US Dollar.
   currency "EUR"
 
@@ -46,6 +46,7 @@ account cost "Project Cost" {
   account manag "Management"
   account wFront "Web Front-End"
   account back "Back-End"
+  account mFront "Mobile Front-End"
 }
 account rev "Payments"
 # The Profit&Loss analysis should be rev - cost accounts.
@@ -66,6 +67,12 @@ resource dev2 "Samantha Müller" {
 }
 resource dev3 "Peter Green" {
   email "kkk@unizar.es"
+}
+
+resoruce Jorge "Jorge Calvo" {
+  email "816357@unizar.es"
+  rate 80
+  limits { dailymax 4h }
 }
 
 # Now we specify the work packages. The whole project is described as
@@ -186,6 +193,41 @@ task WMGame "Web & Mobile Game" {
       charge 12000.0 onstart
     }
   }
+  
+  task tbackendcloud "Soporte despligue en la nube back-end" {
+  	purge chargeset
+  	chargeset backEnd
+  	responsible Jorge
+  	depends WMGame.tback
+  	task tSeleccion "Seleccionar la nube para llevar a cabo el despliegue"{
+  		effort 5d 
+  		allocate Jorge, dev1
+  		}
+  	task tPreparacion "Despliegue de la nube"{
+  		effort 7d
+  		allocate dev1, dev2
+  		depends WMGame.tbackendcloud.tSeleccion
+  		}
+  	task tEvaluacion "Evaluación del despliegue"{
+  		effort 2d
+  		allocate Jorge, dev2
+  		depends WMGame.tbackendcloud.tPreparacion
+  		}
+  }
+  
+  task tdesarrollomovil "Desarrollo del juego para móviles"{
+    purge chargeset
+    chargeset mFront
+    responsible Jorge
+    depends WMGame.tgdesign
+    task tDiseñoInterfaz "Diseño interfaz"{
+    	effort 6d
+    	allocate dev2
+    }
+    task tDesarrolloBBDD "Desarrollo base de datos en el móvil"{
+    	effort 5d
+    	allocate dev1, Jorge
+    }
 }
 
 # Now the project has been specified completely. Stopping here would
